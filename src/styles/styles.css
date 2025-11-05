@@ -420,7 +420,7 @@ footer {
   .timeline { --timeline-x: 40px; }
   .timeline::after { transform: none; }
 
-
+  /* Todos los timeline-content del mismo lado (derecha) */
   .timeline-content {
     box-sizing: border-box;
     margin-left: 85px;
@@ -430,9 +430,8 @@ footer {
   }
 
   .timeline-item:nth-child(even) .timeline-content {
-    margin-left: 24px;
-    margin-right: 85px;
-    width: auto;
+    margin-left: 85px;
+    margin-right: 24px;
   }
 
   .bitacora-content .container {
@@ -440,6 +439,7 @@ footer {
     padding: 0 1.5rem;
   }
 }
+
 
 /* >=1200px */
 @media (min-width: 1200px) {
