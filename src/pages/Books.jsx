@@ -13,34 +13,35 @@ export default function Books() {
     }
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const booksPerPage = 4; // cantidad de libros por página
+
   const navigate = useNavigate();
 
+  // ✅ Cargar libros una sola vez
   useEffect(() => {
     const fetchBooks = async () => {
       try {
         setLoading(true);
         setError(null);
-        
-        // Buscamos libros populares de ficción
+
         const response = await fetch('https://openlibrary.org/search.json?q=subject:fiction&sort=rating&limit=24');
-        
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-        
+
+        if (!response.ok) throw new Error(`Error: ${response.status}`);
+
         const data = await response.json();
-        
-        // Filtramos libros que tengan información completa
-        const filteredBooks = data.docs.filter(book => 
-          book.title && 
-          book.author_name && 
-          book.first_publish_year &&
-          book.cover_i
-        ).slice(0, 20);
-        
+
+        const filteredBooks = data.docs
+          .filter(book =>
+            book.title &&
+            book.author_name &&
+            book.first_publish_year &&
+            book.cover_i
+          )
+          .slice(0, 20);
+
         setBooks(filteredBooks);
         console.log('✅ Libros cargados desde Open Library API:', filteredBooks.length);
-        
       } catch (err) {
         console.error('❌ Error fetching books:', err);
         setError('No se pudieron cargar los libros. Verifica tu conexión a internet.');
@@ -52,14 +53,15 @@ export default function Books() {
     fetchBooks();
   }, []);
 
+  // ✅ Guardar favoritos en localStorage
   useEffect(() => {
     localStorage.setItem('favoriteBooks', JSON.stringify(favorites));
   }, [favorites]);
 
   const toggleFavorite = (key) => {
-    setFavorites((prev) => 
-      prev.includes(key) 
-        ? prev.filter((x) => x !== key) 
+    setFavorites((prev) =>
+      prev.includes(key)
+        ? prev.filter((x) => x !== key)
         : [...prev, key]
     );
   };
@@ -68,12 +70,19 @@ export default function Books() {
     return `https://covers.openlibrary.org/b/id/${coverId}-${size}.jpg`;
   };
 
+  // ✅ Cálculos de paginación (fuera del useEffect)
+  const indexOfLastBook = currentPage * booksPerPage;
+  const indexOfFirstBook = indexOfLastBook - booksPerPage;
+  const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
+  const totalPages = Math.ceil(books.length / booksPerPage);
+
+  // ✅ Render
   if (loading) {
     return (
       <div style={{ padding: '2rem', textAlign: 'center' }}>
-        <h2 style={{ color:'white' }} >📚 Biblioteca Digital</h2>
+        <h2 style={{ color: 'white' }}>📚 Biblioteca Digital</h2>
         <div className="loading-spinner">
-          <p style={{ color:'white' }}>Cargando libros increíbles... 📖</p>
+          <p style={{ color: 'white' }}>Cargando libros increíbles... 📖</p>
         </div>
       </div>
     );
@@ -82,17 +91,20 @@ export default function Books() {
   if (error) {
     return (
       <div style={{ padding: '2rem', textAlign: 'center' }}>
-        <h2 style={{ color:'white' }} >📚 Biblioteca Digital</h2>
-        <div className="error-message" style={{ 
-          background: 'var(--error-color)', 
-          color: 'white', 
-          padding: '1rem', 
-          borderRadius: 'var(--radius-md)',
-          margin: '1rem 0'
-        }}>
+        <h2 style={{ color: 'white' }}>📚 Biblioteca Digital</h2>
+        <div
+          className="error-message"
+          style={{
+            background: 'var(--error-color)',
+            color: 'white',
+            padding: '1rem',
+            borderRadius: 'var(--radius-md)',
+            margin: '1rem 0'
+          }}
+        >
           <p>{error}</p>
-          <button 
-            className="btn btn-primary" 
+          <button
+            className="btn btn-primary"
             onClick={() => window.location.reload()}
           >
             Reintentar
@@ -104,27 +116,29 @@ export default function Books() {
 
   return (
     <div style={{ padding: '2rem' }}>
-      <h2 style={{ color:'white' }}>📚 Biblioteca Digital</h2>
+      <h2 style={{ color: 'white' }}>📚 Biblioteca Digital</h2>
       <p style={{ marginBottom: '1rem', color: 'white' }}>
         Descubre libros populares de ficción de la biblioteca más grande del mundo
       </p>
-      
-      <div style={{ 
-        marginBottom: '2rem', 
-        padding: '0.75rem', 
-        background: 'var(--bg-tertiary)', 
-        borderRadius: 'var(--radius-md)',
-        fontSize: '0.9rem',
-        color: 'var(--text-primary)'
-      }}>
+
+      <div
+        style={{
+          marginBottom: '2rem',
+          padding: '0.75rem',
+          background: 'var(--bg-tertiary)',
+          borderRadius: 'var(--radius-md)',
+          fontSize: '0.9rem',
+          color: 'var(--text-primary)'
+        }}
+      >
         📡 <strong>Fuente de datos:</strong> Open Library API (Internet Archive)
       </div>
-      
+
       <div className="team-grid">
-        {books.map((book) => (
+        {currentBooks.map((book) => (
           <div key={book.key} className="member-card book-card">
             <div className="card-image">
-              <img 
+              <img
                 src={getCoverUrl(book.cover_i)}
                 alt={book.title}
                 loading="lazy"
@@ -132,47 +146,50 @@ export default function Books() {
                   e.target.src = '/src/assets/img/book-placeholder.svg';
                 }}
               />
-              <div className="book-year-badge">
-                {book.first_publish_year}
-              </div>
+              <div className="book-year-badge">{book.first_publish_year}</div>
             </div>
-            
+
             <div className="card-content">
               <h4 className="member-name">{book.title}</h4>
               <p className="member-role">
                 📝 {book.author_name ? book.author_name.slice(0, 2).join(', ') : 'Autor desconocido'}
               </p>
               <p className="member-description">
-                {book.subject ? 
-                  `Géneros: ${book.subject.slice(0, 3).join(', ')}` : 
-                  'Libro de ficción popular'
-                }
+                {book.subject
+                  ? `Géneros: ${book.subject.slice(0, 3).join(', ')}`
+                  : 'Libro de ficción popular'}
               </p>
-              
+
               <div className="book-metadata">
                 {book.publisher && (
-                  <span className="book-publisher">🏢 {book.publisher.slice(0, 2).join(', ')}</span>
+                  <span className="book-publisher">
+                    🏢 {book.publisher.slice(0, 2).join(', ')}
+                  </span>
                 )}
                 {book.language && (
-                  <span className="book-language">🌐 {book.language.slice(0, 2).join(', ').toUpperCase()}</span>
+                  <span className="book-language">
+                    🌐 {book.language.slice(0, 2).join(', ').toUpperCase()}
+                  </span>
                 )}
               </div>
-              
-              <div style={{ 
-                display: 'flex', 
-                gap: '0.5rem', 
-                marginTop: '1rem',
-                flexWrap: 'wrap'
-              }}>
-                <button 
+
+              <div
+                style={{
+                  display: 'flex',
+                  gap: '0.5rem',
+                  marginTop: '1rem',
+                  flexWrap: 'wrap'
+                }}
+              >
+                <button
                   className={`btn ${favorites.includes(book.key) ? 'btn-primary' : ''}`}
                   onClick={() => toggleFavorite(book.key)}
                   style={{ flex: '1', minWidth: '100px' }}
                 >
-                  {favorites.includes(book.key) ? '💖 Favorito' : '🤍 Favorito'} 
+                  {favorites.includes(book.key) ? '💖 Favorito' : '🤍 Favorito'}
                 </button>
-                <button 
-                  className="btn btn-primary" 
+                <button
+                  className="btn btn-primary"
                   onClick={() => navigate(`/books/${book.key.replace('/works/', '')}`)}
                   style={{ flex: '1', minWidth: '100px' }}
                 >
@@ -183,6 +200,53 @@ export default function Books() {
           </div>
         ))}
       </div>
+
+      {/* ✅ Controles de paginación */}
+      {totalPages > 1 && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '1rem',
+            marginTop: '2rem'
+          }}
+        >
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            style={{
+              padding: '0.5rem 1rem',
+              borderRadius: 'var(--radius-md)',
+              border: '1px solid var(--border-color)',
+              background: currentPage === 1 ? 'var(--bg-tertiary)' : 'var(--primary-color)',
+              color: 'white',
+              cursor: currentPage === 1 ? 'not-allowed' : 'pointer'
+            }}
+          >
+            ← Anterior
+          </button>
+
+          <span style={{ color: 'white' }}>
+            Página {currentPage} de {totalPages}
+          </span>
+
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            style={{
+              padding: '0.5rem 1rem',
+              borderRadius: 'var(--radius-md)',
+              border: '1px solid var(--border-color)',
+              background: currentPage === totalPages ? 'var(--bg-tertiary)' : 'var(--primary-color)',
+              color: 'white',
+              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer'
+            }}
+          >
+            Siguiente →
+          </button>
+        </div>
+      )}
     </div>
   );
 }
