@@ -13,6 +13,7 @@ const pages = [
   { path: "/integrantes/cecilia", name: "Cecilia", nivel: "2" },
   { path: "/movies", name: "Películas", nivel: "1" },
   { path: "/books", name: "Libros", nivel: "1" },
+  { path: "/gallery", name: "Galería", nivel: "1" },
   { path: "/arquitectura", name: "Arquitectura", nivel: "1" },
   { path: "/contacto", name: "Contacto", nivel: "1" },
 ];

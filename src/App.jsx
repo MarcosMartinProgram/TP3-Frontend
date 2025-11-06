@@ -15,6 +15,7 @@ import MovieDetail from './pages/MovieDetail';
 import Books from './pages/Books';
 import BookDetail from './pages/BookDetail';
 import Arquitectura from './pages/Arquitectura';
+import Gallery from "./pages/Gallery";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -44,6 +45,7 @@ function App() {
               <Route path="/movies/:id" element={<MovieDetail />} />
               <Route path="/books" element={<Books />} />
               <Route path="/books/:key" element={<BookDetail />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/arquitectura" element={<Arquitectura />} />
               <Route path="/contacto" element={<Contacto />} />
               <Route path="*" element={<NotFoundPage />} />
