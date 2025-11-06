@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/books.css";
 
 export default function Books() {
   const [books, setBooks] = useState([]);
@@ -14,6 +15,7 @@ export default function Books() {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [fade, setFade] = useState(false);
   const booksPerPage = 4; // cantidad de libros por página
 
   const navigate = useNavigate();
@@ -70,7 +72,7 @@ export default function Books() {
     return `https://covers.openlibrary.org/b/id/${coverId}-${size}.jpg`;
   };
 
-  // ✅ Cálculos de paginación (fuera del useEffect)
+  // ✅ Cálculos de paginación
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
   const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
@@ -134,7 +136,7 @@ export default function Books() {
         📡 <strong>Fuente de datos:</strong> Open Library API (Internet Archive)
       </div>
 
-      <div className="team-grid">
+      <div className={`team-grid ${fade ? 'fade-out' : 'fade-in'}`}>
         {currentBooks.map((book) => (
           <div key={book.key} className="member-card book-card">
             <div className="card-image">
@@ -213,38 +215,55 @@ export default function Books() {
           }}
         >
           <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            style={{
-              padding: '0.5rem 1rem',
-              borderRadius: 'var(--radius-md)',
-              border: '1px solid var(--border-color)',
-              background: currentPage === 1 ? 'var(--bg-tertiary)' : 'var(--primary-color)',
-              color: 'white',
-              cursor: currentPage === 1 ? 'not-allowed' : 'pointer'
-            }}
-          >
-            ← Anterior
-          </button>
+  onClick={() => {
+    if (currentPage > 1) {
+      setFade(true);
+      setTimeout(() => {
+        setCurrentPage((prev) => prev - 1);
+        setFade(false);
+      }, 300);
+    }
+  }}
+  disabled={currentPage === 1}
+  style={{
+    padding: '0.5rem 1rem',
+    borderRadius: 'var(--radius-md)',
+    border: '1px solid var(--border-color)',
+    background: currentPage === 1 ? 'var(--bg-tertiary)' : 'var(--primary-color)',
+    color: 'white',
+    cursor: currentPage === 1 ? 'not-allowed' : 'pointer'
+  }}
+>
+  ← Anterior
+</button>
 
-          <span style={{ color: 'white' }}>
-            Página {currentPage} de {totalPages}
-          </span>
+<span style={{ color: 'white' }}>
+  Página {currentPage} de {totalPages}
+</span>
 
-          <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-            disabled={currentPage === totalPages}
-            style={{
-              padding: '0.5rem 1rem',
-              borderRadius: 'var(--radius-md)',
-              border: '1px solid var(--border-color)',
-              background: currentPage === totalPages ? 'var(--bg-tertiary)' : 'var(--primary-color)',
-              color: 'white',
-              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer'
-            }}
-          >
-            Siguiente →
-          </button>
+<button
+  onClick={() => {
+    if (currentPage < totalPages) {
+      setFade(true);
+      setTimeout(() => {
+        setCurrentPage((prev) => prev + 1);
+        setFade(false);
+      }, 300);
+    }
+  }}
+  disabled={currentPage === totalPages}
+  style={{
+    padding: '0.5rem 1rem',
+    borderRadius: 'var(--radius-md)',
+    border: '1px solid var(--border-color)',
+    background: currentPage === totalPages ? 'var(--bg-tertiary)' : 'var(--primary-color)',
+    color: 'white',
+    cursor: currentPage === totalPages ? 'not-allowed' : 'pointer'
+  }}
+>
+  Siguiente →
+</button>
+
         </div>
       )}
     </div>
