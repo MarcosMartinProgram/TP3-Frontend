@@ -18,6 +18,7 @@ export default function Movies() {
     }
   });
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedYear, setSelectedYear] = useState("Por Año");
 
   const navigate = useNavigate();
 
@@ -26,10 +27,17 @@ export default function Movies() {
     setLoading(false);
   }, []);
 
-
-  const filteredMovies = movies.filter((m) =>
-  m.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const uniqueYears = ["Por Año", ...new Set(moviesData.map((m) => m.year))].sort(
+  (a, b) => b - a
 );
+
+const filteredMovies = movies
+  .filter((m) =>
+    m.title.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+  .filter((m) =>
+    selectedYear === "Por Año" ? true : m.year === Number(selectedYear)
+  );
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -44,12 +52,17 @@ export default function Movies() {
   return (
     <div style={{ padding: '2rem' }}>
       <h2 style={{ color: 'white' }}>Películas</h2>
-    <div style={{
-  marginBottom: '1.5rem',
-  display: 'flex',
-  justifyContent: 'center',
-  gap: '1rem'
-}}>
+    
+
+ <div
+  style={{
+    marginBottom: '1.5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '1rem',
+    flexWrap: 'wrap'
+  }}
+>
   <input
     type="text"
     placeholder="Buscar película..."
@@ -63,6 +76,26 @@ export default function Movies() {
       fontSize: '1rem'
     }}
   />
+
+  <select
+    value={selectedYear}
+    onChange={(e) => setSelectedYear(e.target.value)}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: 'var(--radius-md)',
+      border: '1px solid var(--border-color)',
+      background: 'var(--bg-secondary)',
+      color: 'var(--text-primary)',
+      fontSize: '1rem'
+    }}
+  >
+    {uniqueYears.map((year) => (
+      <option key={year} value={year}>
+        {year}
+      </option>
+    ))}
+  </select>
+
 </div>
 
 
