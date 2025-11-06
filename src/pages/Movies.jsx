@@ -17,6 +17,7 @@ export default function Movies() {
       return [];
     }
   });
+  const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,6 +25,11 @@ export default function Movies() {
     setMovies(moviesData);
     setLoading(false);
   }, []);
+
+
+  const filteredMovies = movies.filter((m) =>
+  m.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -38,8 +44,30 @@ export default function Movies() {
   return (
     <div style={{ padding: '2rem' }}>
       <h2 style={{ color: 'white' }}>Películas</h2>
+    <div style={{
+  marginBottom: '1.5rem',
+  display: 'flex',
+  justifyContent: 'center',
+  gap: '1rem'
+}}>
+  <input
+    type="text"
+    placeholder="Buscar película..."
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    style={{
+      padding: '0.5rem 1rem',
+      borderRadius: 'var(--radius-md)',
+      border: '1px solid var(--border-color)',
+      width: '250px',
+      fontSize: '1rem'
+    }}
+  />
+</div>
+
+
       <div className="team-grid">
-        {movies.map((m) => (
+        {filteredMovies.map((m) => (
           <div key={m.id} className="member-card">
             <div className="card-image">
               <img src={movieImages[m.image]} alt={m.title} loading="lazy" />
@@ -58,6 +86,11 @@ export default function Movies() {
           </div>
         ))}
       </div>
+{filteredMovies.length === 0 && (
+        <p style={{ color: 'white', textAlign: 'center' }}>
+          No se encontraron películas que coincidan con “{searchTerm}”.
+        </p>
+      )}
     </div>
   );
 }
