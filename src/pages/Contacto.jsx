@@ -48,11 +48,11 @@ export default function Contacto() {
           <div className="contact-info">
             <h4>Repositorio GitHub</h4>
             <a 
-              href="https://github.com/lumineida/DSW-TP2-Grupo13" 
+              href="https://github.com/MarcosMartinProgram/TP3-Frontend" 
               target="_blank" 
               rel="noopener noreferrer"
             >
-              github.com/lumineida/DSW-TP2-Grupo13
+              MarcosMartinProgram/TP3-Frontend
             </a>
           </div>
         </div>

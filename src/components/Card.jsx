@@ -12,7 +12,9 @@ export default function Card({ integrante, detallado = false }) {
 
   return (
     <div
-      className={`member-card ${detallado ? "member-detail" : "member-summary"}`}
+      className={`member-card ${
+        detallado ? "member-detail" : "member-summary"
+      }`}
       onClick={!detallado ? handleClick : undefined}
     >
       <div className="card-image">
@@ -21,7 +23,7 @@ export default function Card({ integrante, detallado = false }) {
           alt={`${integrante.nombre} - ${integrante.rol}`}
           loading="lazy"
         />
-        
+
         {/* OVERLAY SOLO PARA VISTA RESUMEN */}
         {!detallado && (
           <div className="card-overlay">
@@ -31,11 +33,9 @@ export default function Card({ integrante, detallado = false }) {
             </div>
           </div>
         )}
-        
+
         {/* EFECTO VISUAL SOLO PARA VISTA DETALLADA */}
-        {detallado && (
-          <div className="image-overlay-detalle"></div>
-        )}
+        {detallado && <div className="image-overlay-detalle"></div>}
       </div>
 
       <div className="card-content">
@@ -48,9 +48,20 @@ export default function Card({ integrante, detallado = false }) {
             <p className="member-age">Edad: {integrante.edad}</p>
             <div className="member-section">
               <h5>Habilidades</h5>
-              <div className="member-skills">
+              <div className="skills-container">
                 {integrante.habilidades.map((h, i) => (
-                  <span key={i} className="skill-tag">{h}</span>
+                  <div key={i} className="skill-bar">
+                    <div className="skill-info">
+                      <span className="skill-name">{h.nombre}</span>
+                      <span className="skill-percent">{h.nivel}%</span>
+                    </div>
+                    <div className="bar-bg">
+                      <div
+                        className="bar-fill"
+                        style={{ width: `${h.nivel}%` }}
+                      ></div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -75,9 +86,7 @@ export default function Card({ integrante, detallado = false }) {
           </>
         )}
 
-        {!detallado && (
-          <button className="btn-more">Más info</button>
-        )}
+        {!detallado && <button className="btn-more">Más info</button>}
       </div>
     </div>
   );

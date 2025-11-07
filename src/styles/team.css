@@ -288,3 +288,51 @@
   font-size: 2rem;
   font-weight: 700;
 }
+
+
+/* ===== BARRAS DE HABILIDADES ===== */
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.skill-bar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.bar-bg {
+  background: var(--bg-tertiary);
+  height: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 8px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #2563eb, #22c55e);
+  transition: width 1s ease;
+}
+
+/* Animación suave al cargar */
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--final-width);
+  }
+}
