@@ -93,6 +93,14 @@
   transform: scale(1.05);
 }
 
+.sidebar .logo-wrapper {
+  width: 70%;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ================================
           RESPONSIVE STYLES
    ================================ */

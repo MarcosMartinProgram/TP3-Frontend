@@ -2,6 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { useState } from "react";
 import "../styles/sidebar.css";
+import ReactLogo from "./ReactLogo";
 
 const pages = [
   { path: "/", name: "Inicio", nivel: "1" },
@@ -30,7 +31,12 @@ function Sidebar() {
       </button>
 
       <aside className={`sidebar ${open ? "open" : ""}`}>
-        <img src={logo} alt="Logo" className="logo" />
+       
+       {/* <img src={logo} alt="Logo" className="logo" /> */}
+        <div className="logo-wrapper">
+          <ReactLogo number="13" />
+        </div>
+
         <nav>
           <ul>
             {(() => {

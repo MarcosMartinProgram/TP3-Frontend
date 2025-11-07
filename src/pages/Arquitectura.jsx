@@ -113,7 +113,7 @@ const DiagramViewer = ({ type }) => {
         <h3 style={{ 
           fontSize: '2rem', 
           marginBottom: '1.5rem', 
-          color: 'var(--primary-color)',
+          color: 'white',
           textAlign: 'center'
         }}>
           Estructura de Carpetas y Archivos
