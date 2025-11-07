@@ -3,21 +3,24 @@ import Hero from "../components/Hero";
 import bitacoraImg from "../assets/img/bitacora.png";
 
 export default function Bitacora() {
-  return <div>
-
-      <Hero 
+  return (
+    <div>
+      <Hero
         titulo="Documentación del Proceso"
         descripcion="Seguimiento detallado del desarrollo del proyecto frontend."
         imagen={bitacoraImg}
       />
-        
-    <section className="bitacora-content">
+
+      <section className="bitacora-content">
         <div className="container">
           <div className="timeline">
             <div className="timeline-item">
               <div className="timeline-marker">🚀</div>
               <div className="timeline-content">
-                <h3>Semana 1: Planificación Inicial y Desarrollo de Estructura Base</h3>
+                <h3>
+                  Semana 1: Planificación Inicial y Desarrollo de Estructura
+                  Base
+                </h3>
                 <p className="timeline-date">1 de Septiembre 2025</p>
                 <div className="timeline-description">
                   <h4>Actividades realizadas:</h4>
@@ -30,7 +33,9 @@ export default function Bitacora() {
                     <li>Desarrollo del sistema de navegación responsivo</li>
                     <li>Implementación del menú hamburguesa para móviles</li>
                     <li>Establecimiento de estilos globales (style.css)</li>
-                    <li>JavaScript global (main.js) con funciones compartidas</li>
+                    <li>
+                      JavaScript global (main.js) con funciones compartidas
+                    </li>
                   </ul>
                   <h4>Decisiones de diseño:</h4>
                   <ul>
@@ -94,31 +99,39 @@ export default function Bitacora() {
                   <h4>Problemas encontrados:</h4>
                   <ul>
                     <li>
-                      <strong>Menú hamburguesa:</strong> Incompatibilidad en dispositivos móviles
+                      <strong>Menú hamburguesa:</strong> Incompatibilidad en
+                      dispositivos móviles
                     </li>
                     <li>
-                      <strong>Conflictos CSS:</strong> Sobreescritura de estilos entre archivos
+                      <strong>Conflictos CSS:</strong> Sobreescritura de estilos
+                      entre archivos
                     </li>
                     <li>
-                      <strong>Responsive design:</strong> Elementos desalineados en breakpoints
+                      <strong>Responsive design:</strong> Elementos desalineados
+                      en breakpoints
                     </li>
                     <li>
-                      <strong>Git conflicts:</strong> Merges conflictivos en archivos compartidos
+                      <strong>Git conflicts:</strong> Merges conflictivos en
+                      archivos compartidos
                     </li>
                   </ul>
                   <h4>Soluciones implementadas:</h4>
                   <ul>
                     <li>
-                      <strong>JavaScript modular:</strong> Separación de funciones por archivo
+                      <strong>JavaScript modular:</strong> Separación de
+                      funciones por archivo
                     </li>
                     <li>
-                      <strong>CSS specificity:</strong> Uso de clases específicas
+                      <strong>CSS specificity:</strong> Uso de clases
+                      específicas
                     </li>
                     <li>
-                      <strong>Flexbox:</strong> Mejor control de layouts responsivos
+                      <strong>Flexbox:</strong> Mejor control de layouts
+                      responsivos
                     </li>
                     <li>
-                      <strong>Git workflow:</strong> Branches individuales y pull requests
+                      <strong>Git workflow:</strong> Branches individuales y
+                      pull requests
                     </li>
                   </ul>
                   <h4>Mejoras realizadas:</h4>
@@ -147,11 +160,16 @@ export default function Bitacora() {
                   <h4>Inicialización y estructura del proyecto:</h4>
                   <ul>
                     <li>Planificación de la estructura base del proyecto.</li>
-                    <li>Desarrollo de componentes reutilizables (Card, Hero, Sidebar, Header, Footer).</li>
+                    <li>
+                      Desarrollo de componentes reutilizables (Card, Hero,
+                      Sidebar, Header, Footer).
+                    </li>
                     <li>Estilos css basicos en base a diseño del TP1.</li>
                     <li>Incorporación de rutas y navegación entre páginas. </li>
                     <li>Barra lateral con menú de navegación.</li>
-                    <li>Establecimiento de un sistema de temas (claro/oscuro).</li>
+                    <li>
+                      Establecimiento de un sistema de temas (claro/oscuro).
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -165,12 +183,98 @@ export default function Bitacora() {
                 <div className="timeline-description">
                   <h4>Cambios principales:</h4>
                   <ul>
-                    <li>Incorporación de lectura de datos desde JSON para contenidos dinámicos.</li>
-                    <li>Actualizaciones de estilos y paleta para un look más consistente.</li>
-                    <li>Desarrollo de la página <em>Arquitectura</em> y funcionalidades asociadas.</li>
+                    <li>
+                      Incorporación de lectura de datos desde JSON para
+                      contenidos dinámicos.
+                    </li>
+                    <li>
+                      Actualizaciones de estilos y paleta para un look más
+                      consistente.
+                    </li>
+                    <li>
+                      Desarrollo de la página <em>Arquitectura</em> y
+                      funcionalidades asociadas.
+                    </li>
                     <li>Integración de libros desde una API.</li>
-                    <li>Actualización de documentación: agregado/ajustes en README y Bitácora.</li>
-                    <li>Pequeños fixes y merges para estabilizar la rama principal antes de la entrega.</li>
+                    <li>
+                      Actualización de documentación: agregado/ajustes en README
+                      y Bitácora.
+                    </li>
+                    <li>
+                      Pequeños fixes y merges para estabilizar la rama principal
+                      antes de la entrega.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="timeline-item">
+              <div className="timeline-marker">📊</div>
+              <div className="timeline-content">
+                <h3>Semana 6: Mejora en la Gestión y Visualización de Datos</h3>
+                <p className="timeline-date">31 de Octubre 2025</p>
+                <div className="timeline-description">
+                  <h4>Implementación de Interacción y Perfiles Dinámicos:</h4>
+                  <ul>
+                    {/* Mejora #2: Búsqueda/Filtrado en JSON Local */}
+                    <li>
+                      **Búsqueda y Filtrado Local:** Se añadió funcionalidad
+                      completa para buscar por texto y filtrar por categorías a
+                      los integrantes del equipo (datos locales), mejorando la
+                      navegabilidad en la sección `Equipo`.
+                    </li>
+                    {/* Mejora #3: Paginación para la API Externa */}
+                    <li>
+                      **Paginación de API Externa:** Se implementó un sistema de
+                      paginación (botones Anterior/Siguiente) en la sección que
+                      consume datos de una API externa, optimizando la carga de
+                      resultados. Se incluye el contador de página actual.
+                    </li>
+                    {/* Mejora #5: Barras de Progreso de Habilidades */}
+                    <li>
+                      **Visualización de Habilidades:** Se desarrollaron e
+                      integraron barras de progreso visuales animadas en la
+                      vista detallada de los perfiles de los integrantes,
+                      reflejando de forma clara y moderna el nivel de cada
+                      habilidad.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="timeline-item">
+              <div className="timeline-marker">✨</div>
+              <div className="timeline-content">
+                <h3>Semana 7: Mejoras Visuales y Multimedia</h3>
+                <p className="timeline-date">7 de Noviembre 2025</p>
+                <div className="timeline-description">
+                  <h4>Enfoque en Experiencia de Usuario y Estética:</h4>
+                  <ul>
+                    {/* Mejora #4: Galería de Imágenes Interactiva */}
+                    <li>
+                      **Galería Interactiva con Lightbox:** Se creó una nueva
+                      sección de Galería que muestra imágenes en un formato de
+                      cuadrícula. Al hacer clic, se activa un Lightbox
+                      interactivo con navegación entre imágenes y cierre
+                      mediante botón o tecla ESC.
+                    </li>
+                    {/* Mejora #6: Botones de Redes Sociales Animados */}
+                    <li>
+                      **Iconografía y Enlaces Sociales:** Se integraron botones
+                      de redes sociales (utilizando Font Awesome) con efectos de
+                      escalado y cambio de color al pasar el cursor (hover),
+                      añadiendo un toque profesional a los perfiles.
+                    </li>
+                    {/* (Implica parte de Mejora #1: Animaciones Suaves) */}
+                    <li>
+                      **Ajustes de Interfaz (UX/UI):** Se revisaron los estilos
+                      de los componentes principales para incluir transiciones
+                      suaves y efectos `hover` en elementos interactivos
+                      (tarjetas y botones), alineados con la mejora de la
+                      Interfaz.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -218,5 +322,6 @@ export default function Bitacora() {
           </div>
         </div>
       </section>
-  </div>;
+    </div>
+  );
 }
