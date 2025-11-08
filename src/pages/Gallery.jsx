@@ -3,12 +3,12 @@ import "../styles/Gallery.css";
 
 export default function Gallery() {
   const images = [
-    { id: 1, src: "/src/assets/img/gal_movie01.jpg", title: "The Godfather" },
-    { id: 2, src: "/src/assets/img/gal_movie02.jpg", title: "Forrest Gump" },
-    { id: 3, src: "/src/assets/img/gal_movie03.jpg", title: "Jurassic Park" },
-    { id: 4, src: "/src/assets/img/gal_movie04.jpg", title: "Pulp Fiction" },
-    { id: 5, src: "/src/assets/img/gal_movie05.jpg", title: "The Dark Knight" },
-    { id: 6, src: "/src/assets/img/gal_movie06.jpg", title: "The Shawshank Redemption" },
+    { id: 1, src: "/src/assets/img/movie01.jpg", title: "The Godfather" },
+    { id: 2, src: "/src/assets/img/movie02.jpg", title: "Forrest Gump" },
+    { id: 3, src: "/src/assets/img/movie03.jpg", title: "Jurassic Park" },
+    { id: 4, src: "/src/assets/img/movie04.jpg", title: "Pulp Fiction" },
+    { id: 5, src: "/src/assets/img/movie05.jpg", title: "The Dark Knight" },
+    { id: 6, src: "/src/assets/img/movie06.jpg", title: "The Shawshank Redemption" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(null);
