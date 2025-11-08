@@ -1,6 +1,3 @@
-¡Excelente! Aquí tienes el `README.md` completo, con las 5 mejoras consolidadas (incluyendo las sustituciones) y las rutas de imagen que debes rellenar con tus capturas de pantalla.
-
----
 
 # DSW - TP3 / Evaluación Final - Grupo [***13***] 🚀
 
