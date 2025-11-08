@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import moviesData from "../data/movies.json";
 
 // Importa dinámicamente todas las imágenes de películas para que Vite las procese.
-const movieImageModules = import.meta.glob('../assets/img/movie*.jpg', { eager: true, as: 'url' });
+const movieImageModules = import.meta.glob('../assets/img/movie*.jpg', { eager: true, query: '?url', import: 'default' });
 const movieImages = Object.fromEntries(Object.entries(movieImageModules).map(([path, url]) => [path.split('/').pop(), url]));
 
 export default function MovieDetail() {
