@@ -220,15 +220,15 @@ export default function Bitacora() {
                     {/* Mejora #2: Búsqueda/Filtrado en JSON Local */}
                     <li>
                       **Búsqueda y Filtrado Local:** Se añadió funcionalidad
-                      completa para buscar por texto y filtrar por categorías a
-                      los integrantes del equipo (datos locales), mejorando la
-                      navegabilidad en la sección `Equipo`.
+                      completa para buscar por texto y filtrar por año a
+                      las películas (datos locales), mejorando la
+                      navegabilidad en la sección `Películas`.
                     </li>
                     {/* Mejora #3: Paginación para la API Externa */}
                     <li>
                       **Paginación de API Externa:** Se implementó un sistema de
-                      paginación (botones Anterior/Siguiente) en la sección que
-                      consume datos de una API externa, optimizando la carga de
+                      paginación (botones Anterior/Siguiente) en la sección de Libros
+                      que consume datos de una API externa, optimizando la carga de
                       resultados. Se incluye el contador de página actual.
                     </li>
                     {/* Mejora #5: Barras de Progreso de Habilidades */}
