@@ -1,5 +1,4 @@
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../assets/logo.svg";
 import { useState } from "react";
 import "../styles/sidebar.css";
 import ReactLogo from "./ReactLogo";
@@ -21,6 +20,7 @@ const pages = [
 
 function Sidebar() {
   const [open, setOpen] = useState(false);
+  const [opensubmenu, setOpenSubmenu] = useState(false);
   const location = useLocation();
 
   return (
@@ -32,7 +32,6 @@ function Sidebar() {
 
       <aside className={`sidebar ${open ? "open" : ""}`}>
        
-       {/* <img src={logo} alt="Logo" className="logo" /> */}
         <div className="logo-wrapper">
           <ReactLogo number="13" />
         </div>
@@ -58,13 +57,13 @@ function Sidebar() {
                     <NavLink
                       to={item.path}
                       className={({ isActive }) => (isActive ? "active" : "")}
-                      onClick={() => setOpen(false)}
+                      onClick={() => { hasChildren ? setOpenSubmenu(!opensubmenu) : setOpen(false); }}
                     >
                       {item.name}
-                      {hasChildren && <span className="chevron" aria-hidden>▸</span>}
+                      {hasChildren && (opensubmenu ? <span className="chevron" aria-hidden>▾</span> : <span className="chevron" aria-hidden>▸</span>)}
                     </NavLink>
 
-                    {hasChildren && (
+                    {hasChildren && opensubmenu && (
                       <ul className="submenu">
                         {item.children.map((child) => (
                           <li key={child.path} className="anidado">

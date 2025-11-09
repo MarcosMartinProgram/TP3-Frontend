@@ -148,8 +148,8 @@ const DiagramViewer = ({ type }) => {
             <div style={{ marginLeft: '20px' }}>├── eslint.config.js (reglas de código)</div>
             <div style={{ marginLeft: '20px' }}>├── index.html (HTML base SPA)</div>
             <div style={{ marginLeft: '20px' }}>├── public/ (recursos estáticos)</div>
-            <div style={{ marginLeft: '40px' }}>│   └── data/</div>
-            <div style={{ marginLeft: '60px' }}>│       └── movies.json (datos locales)</div>
+            <div style={{ marginLeft: '40px' }}>│   └── logo.svg</div>
+            <div style={{ marginLeft: '60px' }}>│   └── vite.svg</div>
             <div style={{ marginLeft: '20px' }}>└── src/ (código fuente)</div>
             <div style={{ marginLeft: '40px' }}>    ├── main.jsx (punto de entrada React)</div>
             <div style={{ marginLeft: '40px' }}>    ├── App.jsx (componente raíz + router)</div>
@@ -158,7 +158,8 @@ const DiagramViewer = ({ type }) => {
             <div style={{ marginLeft: '60px' }}>    │   ├── Sidebar.jsx</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── Footer.jsx</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── Hero.jsx</div>
-            <div style={{ marginLeft: '60px' }}>    │   └── Card.jsx</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── Card.jsx</div>
+            <div style={{ marginLeft: '60px' }}>    │   └── ReactLogo.jsx</div>
             <div style={{ marginLeft: '40px' }}>    ├── pages/ (componentes de página)</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── Inicio.jsx</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── Integrantes.jsx</div>
@@ -168,6 +169,7 @@ const DiagramViewer = ({ type }) => {
             <div style={{ marginLeft: '60px' }}>    │   ├── MovieDetail.jsx</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── Books.jsx</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── BookDetail.jsx</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── Gallery.jsx</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── Arquitectura.jsx</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── Contacto.jsx</div>
             <div style={{ marginLeft: '60px' }}>    │   └── NotFoundPage.jsx</div>
@@ -175,6 +177,12 @@ const DiagramViewer = ({ type }) => {
             <div style={{ marginLeft: '60px' }}>    │   ├── styles.css (estilos principales)</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── header.css</div>
             <div style={{ marginLeft: '60px' }}>    │   ├── sidebar.css</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── hero.css</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── reactLogo.css</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── footer.css</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── books.css</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── contacto.css</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── Gallery.css</div>
             <div style={{ marginLeft: '60px' }}>    │   └── team.css</div>
             <div style={{ marginLeft: '40px' }}>    ├── assets/ (recursos del código)</div>
             <div style={{ marginLeft: '60px' }}>    │   └── img/ (imágenes)</div>
@@ -183,10 +191,15 @@ const DiagramViewer = ({ type }) => {
             <div style={{ marginLeft: '80px' }}>    │       ├── julian.png</div>
             <div style={{ marginLeft: '80px' }}>    │       ├── cecilia.jpg</div>
             <div style={{ marginLeft: '80px' }}>    │       ├── movie1-20.jpg</div>
-            <div style={{ marginLeft: '80px' }}>    │       └── book-placeholder.svg</div>
+            <div style={{ marginLeft: '80px' }}>    │       ├── book-placeholder.svg</div>
+            <div style={{ marginLeft: '80px' }}>    │       ├── bitacora.png</div>
+            <div style={{ marginLeft: '80px' }}>    │       ├── colaboracion.png</div>
+            <div style={{ marginLeft: '80px' }}>    │       ├── grupo.png</div>
+            <div style={{ marginLeft: '80px' }}>    │       ├── iconoL.png</div>
             <div style={{ marginLeft: '80px' }}>    │       └── arbol-renderizado.png</div>
             <div style={{ marginLeft: '40px' }}>    └── data/ (datos estructurados)</div>
-            <div style={{ marginLeft: '60px' }}>        └── integrantes.jsx (datos del equipo)</div>
+            <div style={{ marginLeft: '60px' }}>    │   ├── integrantes.jsx (datos del equipo)</div>
+            <div style={{ marginLeft: '60px' }}>        └── movies.json (datos de peliculas)</div>
           </div>
           
           <div style={{ 
