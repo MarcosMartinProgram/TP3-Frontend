@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Gallery.css";
 
+// Cargar dinámicamente las imágenes para que Vite las procese y devuelva URLs válidas en producción
+const imageModules = import.meta.glob('../assets/img/movie0*.jpg', { eager: true, query: '?url', import: 'default' });
+const imageMap = Object.fromEntries(
+  Object.entries(imageModules).map(([p, url]) => [p.split('/').pop(), url])
+);
+
 export default function Gallery() {
   const images = [
-    { id: 1, src: "/src/assets/img/gallery/movie-01.jpg", title: "The Godfather" },
-    { id: 2, src: "/src/assets/img/gallery/movie-02.jpg", title: "Forrest Gump" },
-    { id: 3, src: "/src/assets/img/gallery/movie-03.jpg", title: "Jurassic Park" },
-    { id: 4, src: "/src/assets/img/gallery/movie-04.jpg", title: "Pulp Fiction" },
-    { id: 5, src: "/src/assets/img/gallery/movie-05.jpg", title: "The Dark Knight" },
-    { id: 6, src: "/src/assets/img/gallery/movie-06.jpg", title: "The Shawshank Redemption" },
+    { id: 1, src: imageMap['movie01.jpg'], title: "The Godfather" },
+    { id: 2, src: imageMap['movie02.jpg'], title: "Forrest Gump" },
+    { id: 3, src: imageMap['movie03.jpg'], title: "Jurassic Park" },
+    { id: 4, src: imageMap['movie04.jpg'], title: "Pulp Fiction" },
+    { id: 5, src: imageMap['movie05.jpg'], title: "The Dark Knight" },
+    { id: 6, src: imageMap['movie06.jpg'], title: "The Shawshank Redemption" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(null);
