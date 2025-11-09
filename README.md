@@ -11,6 +11,7 @@ y el sitio final
 - [3. Paginación en API Externa](#3-paginación-en-api-externa)
 - [4. Galería de Imágenes Interactiva](#4-galería-de-imágenes-interactiva)
 - [5. Barras de Progreso de Habilidades](#5-barras-de-progreso-de-habilidades)
+- [6. Botones de Redes Sociales Animados](#6-botones-de-redes-sociales-animados)
 
 ---
 
@@ -41,12 +42,12 @@ y el sitio final
 
 ---
 
-## 4. Organización del Menú Lateral de Integrantes
-**Descripción:** Implementación de menú **Acordeón/Desplegable** en la *Sidebar* para organizar sub-enlaces.  
+## 4. Galería de Imágenes Interactiva
+**Descripción:** Se introdujo una nueva sección **Galería** con un grid de imagenes que al clickear muestran un lightbox con navegación.  
 - **Antes:**  
-  ![Hamburguesa antes](docs/img7.jpg)  
-- **Después:**  
-  ![Hamburguesa después](docs/img8.jpg)
+  --- 
+- **Después: https://tp-3-frontend.vercel.app/gallery**  
+  ![Galería](docs/img8.jpg)
 
 ---
 
@@ -56,3 +57,12 @@ y el sitio final
   ![Modo Oscuro antes](docs/img9.jpg)  
 - **Después:**  
   ![Modo Oscuro después](docs/img10.jpg)
+
+---
+
+## 6. Botones de Redes Sociales Animados
+**Descripción:** Adición de **Iconos de redes sociales** con efectos al hover en el footer.  
+- **Antes:**  
+  ![Footer antes](docs/img12.jpg)  
+- **Después:**  
+  ![Footer después](docs/img13.jpg)
