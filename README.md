@@ -44,10 +44,9 @@ y el sitio final
 
 ## 4. Galería de Imágenes Interactiva
 **Descripción:** Se introdujo una nueva sección **Galería** con un grid de imagenes que al clickear muestran un lightbox con navegación.  
-- **Antes:**  
-  --- 
+
 - **Después: https://tp-3-frontend.vercel.app/gallery**  
-  ![Galería](docs/img8.jpg)
+  ![Galería](docs/img11.png)
 
 ---
 
@@ -63,6 +62,6 @@ y el sitio final
 ## 6. Botones de Redes Sociales Animados
 **Descripción:** Adición de **Iconos de redes sociales** con efectos al hover en el footer.  
 - **Antes:**  
-  ![Footer antes](docs/img12.jpg)  
+  ![Footer antes](docs/img12.png)  
 - **Después:**  
-  ![Footer después](docs/img13.jpg)
+  ![Footer después](docs/img13.png)
