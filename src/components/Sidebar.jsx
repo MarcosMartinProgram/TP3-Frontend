@@ -20,6 +20,7 @@ const pages = [
 
 function Sidebar() {
   const [open, setOpen] = useState(false);
+  const [opensubmenu, setOpenSubmenu] = useState(false);
   const location = useLocation();
 
   return (
@@ -56,17 +57,17 @@ function Sidebar() {
                     <NavLink
                       to={item.path}
                       className={({ isActive }) => (isActive ? "active" : "")}
-                      onClick={() => hasChildren && setOpen(!open)}
+                      onClick={() => { hasChildren ? setOpenSubmenu(!opensubmenu) : setOpen(false); }}
                     >
                       {item.name}
-                      {hasChildren && (open ? <span className="chevron" aria-hidden>▾</span> : <span className="chevron" aria-hidden>▸</span>)}
+                      {hasChildren && (opensubmenu ? <span className="chevron" aria-hidden>▾</span> : <span className="chevron" aria-hidden>▸</span>)}
                     </NavLink>
 
-                    {hasChildren && open && (
+                    {hasChildren && opensubmenu && (
                       <ul className="submenu">
                         {item.children.map((child) => (
                           <li key={child.path} className="anidado">
-                            <NavLink to={child.path} className={({ isActive }) => (isActive ? "active" : "")} >
+                            <NavLink to={child.path} className={({ isActive }) => (isActive ? "active" : "")} onClick={() => setOpen(false)}>
                               {child.name}
                             </NavLink>
                           </li>
