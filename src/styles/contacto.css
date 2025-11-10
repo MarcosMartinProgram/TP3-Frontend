@@ -129,6 +129,7 @@
 .form-group input,
 .form-group textarea {
   width: 100%;
+  box-sizing: border-box; /* Clave para evitar desbordamiento */
   padding: 0.75rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -203,7 +204,8 @@
   }
 }
 @media (max-width: 500px) {
-  .contact-card {
+  .contact-card,
+  .form-container {
     padding: 1.5rem;
   }
   .contact-item {
